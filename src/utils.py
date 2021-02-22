@@ -13,6 +13,12 @@ def cleanup(text: str) -> str:
     return text
 
 
+def is_ip(text: str) -> bool:
+    return bool(
+        re.match("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", text)
+    )
+
+
 def is_ir(text: str) -> bool:
     return bool(re.match(r"^(.+)\.ir$", text))
 
