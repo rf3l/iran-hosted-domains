@@ -45,8 +45,8 @@ jobs:
         with:
           artifacts: "data/*.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ env.TAG_NAME }}
-          release_name: ${{ env.RELEASE_NAME }}
+          tag: ${{ env.TAG_NAME }}
+          name: ${{ env.RELEASE_NAME }}
 
 #   v2ray:
 #     name: V2ray Dat File
