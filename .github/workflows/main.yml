@@ -75,7 +75,7 @@ jobs:
 
       - name: Go get project code
         run: |
-          go get -v -insecure $REPO_URL
+          go get -v -insecure $REPO_URL/tree/v2ray-setup
 
       - name: Build dlc.dat file
         run: |
