@@ -75,13 +75,18 @@ jobs:
 
       - name: Go get project code
         run: |
-          go get -v -insecure $REPO_URL/tree/v2ray-setup
-
+          go get -v -insecure github.com/v2fly/domain-list-community
+          
       - name: Build dlc.dat file
         run: |
+          rm -r ${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
           mv ir_domains.txt ${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data
-          mv other_domains.txt ${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data          
-          iran-hosted-domains --datapath=${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data
+          mv other_domains.txt ${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data
+          domain-list-community --datapath=${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
+          
+      - name: Build dlc.dat file
+        run: |
+          iran-hosted-domains --datapath=${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
           
       - name: Archive result
         uses: actions/upload-artifact@v2
