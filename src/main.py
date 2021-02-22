@@ -3,8 +3,8 @@ import os
 import requests
 import xlrd
 
-from src.constants import *
-from src.utils import *
+from constants import *
+from utils import *
 
 
 def g2b_ito_gov():
