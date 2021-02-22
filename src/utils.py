@@ -10,6 +10,9 @@ def cleanup(text: str) -> str:
     # Remove everything after /
     text = re.sub("^(.+)/.*$", "\1", text)
 
+    # Remove Port
+    text = re.sub(":\d{1,5}$", "", text)
+
     return text
 
 
