@@ -54,12 +54,12 @@ if __name__ == '__main__':
     if not os.path.exists("data"):
         os.mkdir("data")
 
-    with open("data/ir_domains", "w") as file:
+    with open("data/ir_domains.txt", "w") as file:
         data = list(ir_domains)
         data.sort()
         file.write("\n".join(data))
 
-    with open("data/other_domains", "w") as file:
+    with open("data/other_domains.txt", "w") as file:
         data = list(other_domains)
         data.sort()
         file.write("\n".join(data))
