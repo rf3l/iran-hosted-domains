@@ -40,7 +40,7 @@ def adsl_tci():
 
 if __name__ == '__main__':
     if not os.path.exists("download"):
-        os.mkdir("data")
+        os.mkdir("download")
 
     g2b_set = g2b_ito_gov()
     x_set = adsl_tci()
