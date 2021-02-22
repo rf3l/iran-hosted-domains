@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - v2ray-setup
     paths-ignore:
       - "**/README.md"
 
@@ -40,25 +41,51 @@ jobs:
             data/ir_domains.txt
             data/other_domains.txt
             
-      - name: Upload result as release
-        uses: ncipollo/release-action@v1
+#       - name: Upload result as release
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "data/*.txt"
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           tag: ${{ env.TAG_NAME }}
+#           name: ${{ env.RELEASE_NAME }}
+
+  v2ray:
+    name: V2ray Dat File
+    needs: crawl
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go
+        uses: actions/setup-go@v2
         with:
-          artifacts: "data/*.txt"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.TAG_NAME }}
-          name: ${{ env.RELEASE_NAME }}
+          go-version: ^1.15
 
-#   v2ray:
-#     name: V2ray Dat File
-#     needs: crawl
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Setup Go
-#         uses: actions/setup-go@v2
-#         with:
-#           go-version: ^1.15
+      - name: Download result of crawl job
+        uses: actions/download-artifact@v2
+        with:
+          name: generated-domains
+          
+      - name: Set $GOPATH and more variables
+        run: |
+          echo "RELEASE_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+          echo "TAG_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+          echo "REPO_URL=github.com/${{ github.repository }}" >> $GITHUB_ENV
+          echo "GOPATH=$(dirname $GITHUB_WORKSPACE)" >> $GITHUB_ENV
+          echo "$(dirname $GITHUB_WORKSPACE)/bin" >> $GITHUB_PATH
+        shell: bash
 
-#       - name: Download result of crawl job
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: generated-domains
+      - name: Go get project code
+        run: |
+          go get -v -insecure $REPO_URL
+
+      - name: Build dlc.dat file
+        run: |
+          mv ir_domains.txt ${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data
+          mv other_domains.txt ${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data          
+          iran-hosted-domains --datapath=${{ env.GOPATH }}/src/${{ env.REPO_URL }}/data
+          
+      - name: Archive result
+        uses: actions/upload-artifact@v2
+        with:
+          name: generated-domains
+          path: |
+            dlc.dat
