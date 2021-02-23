@@ -47,6 +47,7 @@ if __name__ == '__main__':
     full_domains = g2b_set.union(x_set)
     full_domains = set(filter(lambda x: is_url(x), full_domains))
     full_domains = set(filter(lambda x: not is_ip(x), full_domains))
+    full_domains = set(map(lambda x: convert_utf8(x), full_domains))
 
     ir_domains = set(filter(lambda x: is_ir(x), full_domains))
     other_domains = full_domains.difference(ir_domains)
