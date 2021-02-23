@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-      - v2ray-setup
-    paths-ignore:
-      - "**/README.md"
 
 jobs:
   crawl:
@@ -33,7 +30,7 @@ jobs:
         run: |
           python src/main.py
 
-      - name: Archive code coverage results
+      - name: Archive Generated domains
         uses: actions/upload-artifact@v2
         with:
           name: generated-domains
@@ -41,13 +38,13 @@ jobs:
             data/ir_domains.txt
             data/other_domains.txt
             
-#       - name: Upload result as release
-#         uses: ncipollo/release-action@v1
-#         with:
-#           artifacts: "data/*.txt"
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           tag: ${{ env.TAG_NAME }}
-#           name: ${{ env.RELEASE_NAME }}
+      - name: Upload result as release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "data/*.txt"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.TAG_NAME }}
+          name: ${{ env.RELEASE_NAME }}
 
   v2ray:
     name: V2ray Dat File
@@ -69,24 +66,25 @@ jobs:
           echo "RELEASE_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
           echo "TAG_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
           echo "REPO_URL=github.com/${{ github.repository }}" >> $GITHUB_ENV
+          echo "V2FLY_URL=github.com/v2fly/domain-list-community" >> $GITHUB_ENV
           echo "GOPATH=$(dirname $GITHUB_WORKSPACE)" >> $GITHUB_ENV
           echo "$(dirname $GITHUB_WORKSPACE)/bin" >> $GITHUB_PATH
         shell: bash
 
       - name: Go get project code
         run: |
-          go get -v -insecure github.com/v2fly/domain-list-community
+          go get -v ${{ env.V2FLY_URL }}
           
       - name: Build dlc.dat file
         run: |
-          rm -r ${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
-          mv ir_domains.txt ${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
-          mv other_domains.txt ${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
-          domain-list-community --datapath=${{ env.GOPATH }}/src/github.com/v2fly/domain-list-community/data
+          rm -r ${{ env.GOPATH }}/src/${{ env.V2FLY_URL }}/data
+          cat ir_domains.txt > ${{ env.GOPATH }}/src/${{ env.V2FLY_URL }}/data
+          cat other_domains.txt > ${{ env.GOPATH }}/src/${{ env.V2FLY_URL }}/data
+          domain-list-community --datapath=${{ env.GOPATH }}/src/${{ env.V2FLY_URL }}/data
                     
       - name: Archive result
         uses: actions/upload-artifact@v2
         with:
-          name: generated-domains
+          name: generated-dat
           path: |
             dlc.dat
