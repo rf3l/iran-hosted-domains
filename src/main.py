@@ -52,8 +52,8 @@ if __name__ == '__main__':
     ir_domains = set(filter(lambda x: is_ir(x), full_domains))
     other_domains = full_domains.difference(ir_domains)
 
-    if not os.path.exists("data"):
-        os.mkdir("data")
+    if not os.path.exists("output"):
+        os.mkdir("output")
 
     with open(ir_domains_path, "w") as file:
         data = list(ir_domains)

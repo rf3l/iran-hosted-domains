@@ -35,13 +35,13 @@ jobs:
         with:
           name: generated-domains
           path: |
-            data/ir_domains.txt
-            data/other_domains.txt
+            output/ir_domains.txt
+            output/other_domains.txt
             
       - name: Upload result as release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "data/*.txt"
+          artifacts: "output/*.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
