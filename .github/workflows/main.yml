@@ -41,7 +41,7 @@ jobs:
       - name: Upload result as release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "output/*.txt"
+          artifacts: "output/*.*"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}

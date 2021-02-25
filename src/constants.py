@@ -9,3 +9,4 @@ adsl_tci_file_path = "download/adsl_tci.txt"
 # Output files
 ir_domains_path = "output/ir_domains.txt"
 other_domains_path = "output/other_domains.txt"
+qv2ray_schema_path = "output/qv2ray_schema.json"
