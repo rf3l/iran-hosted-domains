@@ -20,6 +20,12 @@ the [release](https://github.com/SamadiPour/iran-hosted-domains/releases) sectio
 
 I will provide more detailed instructions for popular tools.
 
+## Files
+
+- **ir_domains.txt:** Contains all websites that ends with `.ir`
+- **other_domains.txt:** Contains all websites that ends with `.com` or other Top-level domains name
+- **qv2ray_schema.json:** Importable json schema that can be used in [Qv2ray](https://github.com/Qv2ray/Qv2ray)
+
 ## Source
 
 Currently, there are only two main sources:
