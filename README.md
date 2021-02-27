@@ -19,6 +19,17 @@ the [release](https://github.com/SamadiPour/iran-hosted-domains/releases) sectio
 
 I will provide more detailed instructions for popular tools.
 
+### Qv2ray
+In the release section, you'll find the qv2ray_schema file.
+- Download the file.
+- open `preferences` and click on `Advanced Route Settings`.
+- From the bottom of the screen, click on `import schema...`
+- choose the downloaded file (qv2ray_schema.json).
+- in the opened dialogue box, click on yes.
+- Click on OK.
+
+![image](https://user-images.githubusercontent.com/24422125/109384345-661c7000-7901-11eb-96ae-4376ea7d2eb4.png)
+
 ## Files
 
 - **ir_domains:** Contains all websites that ends with `.ir`
