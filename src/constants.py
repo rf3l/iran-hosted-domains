@@ -6,6 +6,9 @@ g2b_gov_file_path = "download/g2b_ito_gov.xls"
 adsl_tci_url = "https://raw.githubusercontent.com/Hossein52Hz/iranian-sites-list/main/sitelist.txt"
 adsl_tci_file_path = "download/adsl_tci.txt"
 
+# Custom List
+custom_list_file_path = "./custom_domains.txt"
+
 # Output files
 ir_domains_path = "output/ir_domains.txt"
 other_domains_path = "output/other_domains.txt"

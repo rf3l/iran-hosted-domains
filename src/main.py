@@ -6,12 +6,13 @@ import json
 
 from constants import *
 from utils import *
+from functools import reduce
 
 
 def download(url: str, path: str):
     if not os.path.exists(path):
         r = requests.get(url, allow_redirects=True, verify=False)
-        with open(path, 'wb') as file:
+        with open(path, "wb") as file:
             file.write(r.content)
             file.close()
 
@@ -22,7 +23,7 @@ def g2b_ito_gov():
     workbook = xlrd.open_workbook(g2b_gov_file_path, ignore_workbook_corruption=True)
     sheet = workbook.sheet_by_index(0)
 
-    data = [sheet.row_values(row)[0] for row in range(sheet.nrows)]
+    data = (sheet.row_values(row)[0] for row in range(sheet.nrows))
     return set(map(lambda x: cleanup(x), data))
 
 
@@ -30,10 +31,17 @@ def adsl_tci():
     download(adsl_tci_url, adsl_tci_file_path)
 
     # Skip first 2 lines!
-    file = open(adsl_tci_file_path, "r")
-    next(file)
-    next(file)
-    lines = file.readlines()
+    with open(adsl_tci_file_path, "r") as file:
+        next(file)
+        next(file)
+        lines = file.readlines()
+
+    return set(map(lambda x: cleanup(x.strip()), lines))
+
+
+def custom_list():
+    with open(custom_list_file_path, "r") as file:
+        lines = file.readlines()
 
     return set(map(lambda x: cleanup(x.strip()), lines))
 
@@ -55,21 +63,21 @@ def create_qv2ray_schema(domains: list):
     save_to_file(qv2ray_schema_path, json.dumps(schema))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if not os.path.exists("download"):
         os.mkdir("download")
     if not os.path.exists("output"):
         os.mkdir("output")
 
     # Request data from sources and cleanup
-    g2b_set = g2b_ito_gov()
-    x_set = adsl_tci()
+    sets = [g2b_ito_gov(), adsl_tci(), custom_list()]
 
     # Filter extras
-    full_domains = g2b_set.union(x_set)
-    full_domains = set(filter(lambda x: is_url(x), full_domains))
-    full_domains = set(filter(lambda x: not is_ip(x), full_domains))
-    full_domains = set(map(lambda x: convert_utf8(x), full_domains))
+    full_domains = reduce(lambda x, y: x.union(y), sets)
+    full_domains = filter(lambda x: is_url(x), full_domains)
+    full_domains = filter(lambda x: not is_ip(x), full_domains)
+    full_domains = map(lambda x: convert_utf8(x), full_domains)
+    full_domains = set(full_domains)
 
     # Divide info
     ir_domains = set(filter(lambda x: is_ir(x), full_domains))
