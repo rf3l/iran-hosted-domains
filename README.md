@@ -18,7 +18,9 @@ This can differ depending on which tool you use. You can download the domains li
 the [release page](https://github.com/SamadiPour/iran-hosted-domains/releases).
 
 ### Qv2ray
+
 In the release section, you'll find the qv2ray_schema file.
+
 - Download the file.
 - open `preferences` and click on `Advanced Route Settings`.
 - From the bottom of the screen, click on `import schema...`
@@ -40,9 +42,11 @@ Currently, there are only two main sources:
 
 - [ITO GOV](https://g2b.ito.gov.ir/index.php/site/list_ip)
 - [ADSL TCI](https://adsl.tci.ir/panel/sites)
+- [Custom List](https://github.com/SamadiPour/iran-hosted-domains/blob/main/custom_domains.txt)
 
 If you know of any other source, or you found a website that isn't here, please open
-an [issue](https://github.com/SamadiPour/iran-hosted-domains/issues) or contact me.
+an [issue](https://github.com/SamadiPour/iran-hosted-domains/issues) or add that specific site to `custom_domains.txt`
+file or contact me.
 
 ## How does it work?
 
