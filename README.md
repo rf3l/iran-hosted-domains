@@ -15,9 +15,7 @@ The following issues arise when using VPN for some Iran hosted websites:
 ## Usage
 
 This can differ depending on which tool you use. You can download the domains list from
-the [release](https://github.com/SamadiPour/iran-hosted-domains/releases) section.
-
-I will provide more detailed instructions for popular tools.
+the [release page](https://github.com/SamadiPour/iran-hosted-domains/releases).
 
 ### Qv2ray
 In the release section, you'll find the qv2ray_schema file.
