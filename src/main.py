@@ -5,6 +5,7 @@ import xlrd
 import json
 
 from constants import *
+from custom_domains import *
 from utils import *
 from functools import reduce
 
@@ -17,7 +18,7 @@ def download(url: str, path: str):
             file.close()
 
 
-def g2b_ito_gov():
+def g2b_ito_gov() -> set:
     download(g2b_gov_url, g2b_gov_file_path)
 
     workbook = xlrd.open_workbook(g2b_gov_file_path, ignore_workbook_corruption=True)
@@ -27,7 +28,7 @@ def g2b_ito_gov():
     return set(map(lambda x: cleanup(x), data))
 
 
-def adsl_tci():
+def adsl_tci() -> set:
     download(adsl_tci_url, adsl_tci_file_path)
 
     # Skip first 2 lines!
@@ -39,24 +40,22 @@ def adsl_tci():
     return set(map(lambda x: cleanup(x.strip()), lines))
 
 
-def custom_list():
-    with open(custom_list_file_path, "r") as file:
-        lines = file.readlines()
-
-    return set(map(lambda x: cleanup(x.strip()), lines))
-
-
 def save_to_file(path, content):
     with open(path, "w") as file:
         file.write(content)
 
 
-def create_qv2ray_schema(domains: list):
+def create_qv2ray_schema(directs: list, proxies: list):
     schema = {
         "description": "Iran hosted domains",
         "domainStrategy": "AsIs",
         "domains": {
-            "direct": ["regexp:^.+\\.ir$"] + domains
+            "direct": ["regexp:^.+\\.ir$"] + directs,
+            "proxy": proxies,
+            "block": ["geosite:category-ads-all"]
+        },
+        "ips": {
+            "direct": ["geoip:ir"]
         },
         "name": "ir_hosted"
     }
@@ -69,8 +68,11 @@ if __name__ == "__main__":
     if not os.path.exists("output"):
         os.mkdir("output")
 
+    # Proxy domains
+    proxy_domains = sorted(set(custom_domains["proxy"]))
+
     # Request data from sources and cleanup
-    sets = [g2b_ito_gov(), adsl_tci(), custom_list()]
+    sets = [g2b_ito_gov(), adsl_tci(), set(custom_domains["direct"])]
 
     # Filter extras
     full_domains = reduce(lambda x, y: x.union(y), sets)
@@ -90,4 +92,4 @@ if __name__ == "__main__":
     # Generate output files
     save_to_file(ir_domains_path, "\n".join(ir_domains))
     save_to_file(other_domains_path, "\n".join(other_domains))
-    create_qv2ray_schema(other_domains)
+    create_qv2ray_schema(other_domains, proxy_domains)
