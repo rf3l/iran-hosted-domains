@@ -20,7 +20,6 @@ jobs:
       
       - name: Env
         run: |
-          echo "TAG_NAME=$(date +%Y/%m/%d)" >> $GITHUB_ENV
           echo "RELEASE_NAME=$(date +%Y/%m/%d)" >> $GITHUB_ENV
           
       - name: Install dependencies
@@ -40,12 +39,17 @@ jobs:
             output/ir_domains.txt
             output/other_domains.txt
             
+      - name: Delete latest release
+        uses: ame-yu/action-delete-latest-release@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+            
       - name: Upload result as release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "output/*.*"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.TAG_NAME }}
+          tag: "latest"
           name: ${{ env.RELEASE_NAME }}
 
 #   v2ray:
