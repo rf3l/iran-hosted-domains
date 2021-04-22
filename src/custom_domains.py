@@ -7,5 +7,7 @@ custom_domains = {
         "mashadkala.com",
         "persiangig.com",
         "livetabco.com",
+        "lioncomputer.com",
+        "restfulsms.com"
     ],
 }
