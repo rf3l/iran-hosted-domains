@@ -49,7 +49,6 @@ jobs:
         with:
           artifacts: "output/*.*"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "latest"
           name: ${{ env.RELEASE_NAME }}
 
 #   v2ray:
