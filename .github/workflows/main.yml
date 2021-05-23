@@ -36,13 +36,14 @@ jobs:
       - name: Check result files
         run: |
           total=$(wc -l output/*.txt | awk 'END {print $1}')
+          formatted_total=$(LC_NUMERIC=en_US printf "%'.f\n" $total)
           old=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/SamadiPour/iran-hosted-domains/releases/latest | grep "body" | cut -d\" -f4 | cut -d " " -f1)          
 
-          if [[ $total -gt $old ]]; then
+          if [[ $formatted_total -ne $old ]]; then
             echo "SHOULD_UPDATE=true" >> $GITHUB_ENV
           fi
 
-          echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV
+          echo "TOTAL_DOMAINS=$formatted_total" >> $GITHUB_ENV
 
       - name: Upload result as release
         if: ${{ env.SHOULD_UPDATE }}
