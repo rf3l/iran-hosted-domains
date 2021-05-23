@@ -10,5 +10,6 @@ custom_domains = {
         "lioncomputer.com",
         "restfulsms.com",
         "blubank.com",
+        "ustclothing.com",
     ],
 }
