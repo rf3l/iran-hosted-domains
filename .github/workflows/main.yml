@@ -38,11 +38,15 @@ jobs:
           total=$(wc -l output/*.txt | awk 'END {print $1}')
           old=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/SamadiPour/iran-hosted-domains/releases/latest | grep "body" | cut -d\" -f4 | cut -d " " -f1)          
 
+          echo "total $total"
+          echo "old $old"
+
           if [[ $total -ne $old ]]; then
             echo "SHOULD_UPDATE=true" >> $GITHUB_ENV
+            echo "Should Update"
           fi
 
-          echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV
+          echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV          
 
       - name: Upload result as release
         if: ${{ env.SHOULD_UPDATE }}
