@@ -35,7 +35,7 @@ jobs:
 
       - name: Check result files
         run: |
-          total=$(wc -l *.txt | awk 'END {print $1}')
+          total=$(wc -l output/*.txt | awk 'END {print $1}')
           old=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/SamadiPour/iran-hosted-domains/releases/latest | grep "body" | cut -d\" -f4 | cut -d " " -f1)          
 
           if [[ $total -gt $old ]]; then
