@@ -28,7 +28,7 @@ In the release section, you'll find the qv2ray_schema file.
 - in the opened dialogue box, click on yes.
 - Click on OK.
 
-![image](https://user-images.githubusercontent.com/24422125/109384345-661c7000-7901-11eb-96ae-4376ea7d2eb4.png)
+![image](https://user-images.githubusercontent.com/24422125/115480663-397d3880-a260-11eb-88db-d3d7f8074767.png)
 
 ## Files
 
