@@ -18,6 +18,11 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v2
+        
+      - name: Setup Go 1.x.y
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
 
       - name: Env
         run: |
@@ -46,7 +51,19 @@ jobs:
             echo "Should Update"
           fi
 
-          echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV          
+          echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV
+
+      - name: Upload result as release
+        if: ${{ env.SHOULD_UPDATE }}
+        run: |
+          git clone https://github.com/v2fly/domain-list-community
+          rm -rf domain-list-community/data/*
+          cp output/ir_domains.txt domain-list-community/data/ir
+          cp output/other_domains.txt domain-list-community/data/other
+          cd domain-list-community
+          go run ./ --outputdir=../output
+          cd ../output
+          mv dlc.dat iran.dat
 
       - name: Upload result as release
         if: ${{ env.SHOULD_UPDATE }}
