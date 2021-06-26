@@ -54,7 +54,7 @@ jobs:
           echo "TOTAL_DOMAINS=$total" >> $GITHUB_ENV
 
       - name: Build .dat file
-#         if: ${{ env.SHOULD_UPDATE }}
+        if: ${{ env.SHOULD_UPDATE }}
         run: |
           git clone https://github.com/v2fly/domain-list-community
           rm -rf domain-list-community/data/*
@@ -66,7 +66,7 @@ jobs:
           mv dlc.dat iran.dat
 
       - name: Upload result as release
-#         if: ${{ env.SHOULD_UPDATE }}
+        if: ${{ env.SHOULD_UPDATE }}
         uses: ncipollo/release-action@v1
         with:
           artifacts: "output/*.*"
