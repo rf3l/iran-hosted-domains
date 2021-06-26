@@ -41,7 +41,9 @@ It can be used in all v2fly, v2ray and xray clients.
     ![image](https://user-images.githubusercontent.com/24422125/123522516-f2ce1380-d6d2-11eb-971f-0176f6e5b8ec.png)
     - SagerNet Android: import from `Route -> Three dots -> Manage Route Assets`   
 
-    ![sagernet](https://user-images.githubusercontent.com/24422125/123522689-1cd40580-d6d4-11eb-90c1-a0341927e283.jpg)
+<p align="center">
+  <img alt="sagernet" src="https://user-images.githubusercontent.com/24422125/123522689-1cd40580-d6d4-11eb-90c1-a0341927e283.jpg">
+</p>
 
 3. Add proper rules
     - `ext:iran.dat:ir`
