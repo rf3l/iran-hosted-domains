@@ -21,20 +21,40 @@ the [release page](https://github.com/SamadiPour/iran-hosted-domains/releases).
 
 In the release section, you'll find the qv2ray_schema file.
 
-- Download the file.
-- open `preferences` and click on `Advanced Route Settings`.
-- From the bottom of the screen, click on `import schema...`
-- choose the downloaded file (qv2ray_schema.json).
-- in the opened dialogue box, click on yes.
-- Click on OK.
+1. Download the file.
+2. open `preferences` and click on `Advanced Route Settings`.
+3. From the bottom of the screen, click on `import schema...`
+4. choose the downloaded file (qv2ray_schema.json).
+5. in the opened dialogue box, click on yes.
+6. Click on OK.
 
 ![image](https://user-images.githubusercontent.com/24422125/115480663-397d3880-a260-11eb-88db-d3d7f8074767.png)
 
+### .dat file
+
+It can be used in all v2fly, v2ray and xray clients.
+
+1. Download `iran.dat` file.
+2. Copy/Import file in your client  
+  for example:
+    - v2ray macOS: `/usr/local/share/v2ray`
+    ![image](https://user-images.githubusercontent.com/24422125/123522516-f2ce1380-d6d2-11eb-971f-0176f6e5b8ec.png)
+    - SagerNet Android: import from `Route -> Three dots -> Manage Route Assets`   
+
+    ![sagernet](https://user-images.githubusercontent.com/24422125/123522689-1cd40580-d6d4-11eb-90c1-a0341927e283.jpg)
+
+3. Add proper rules
+    - `ext:iran.dat:ir`
+    - `ext:iran.dat:other`
+
+4. Reconnect
+
 ## Files
 
-- **ir_domains:** Contains all websites that ends with `.ir`
-- **other_domains:** Contains all websites that ends with `.com` or other Top-level domains name
-- **qv2ray_schema:** Importable json schema that can be used in [Qv2ray](https://github.com/Qv2ray/Qv2ray)
+- **iran.dat:** Contains both `ir_domains.txt` and `other_domains.txt`.
+- **ir_domains:** Contains all websites that ends with `.ir`.
+- **other_domains:** Contains all websites that ends with `.com` or other Top-level domains name.
+- **qv2ray_schema:** Importable json schema that can be used in [Qv2ray](https://github.com/Qv2ray/Qv2ray).
 
 ## Source
 
