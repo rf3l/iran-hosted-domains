@@ -16,6 +16,9 @@ def cleanup(text: str) -> str:
     # Remove everything after %
     text = re.sub("%.+", "", text)
 
+    # Remove ,
+    text = re.sub(",", "", text)
+
     return text.strip()
 
 
