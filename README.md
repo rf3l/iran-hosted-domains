@@ -64,7 +64,7 @@ Currently, there are only two main sources:
 
 - [ITO GOV](https://g2b.ito.gov.ir/index.php/site/list_ip)
 - [ADSL TCI](https://adsl.tci.ir/panel/sites)
-- [Custom List](https://github.com/SamadiPour/iran-hosted-domains/blob/main/data/custom_domains.py)
+- [Custom List](https://github.com/SamadiPour/iran-hosted-domains/blob/main/src/data/custom_domains.py)
 
 If you know of any other source, or you found a website that isn't here, please open
 an [issue](https://github.com/SamadiPour/iran-hosted-domains/issues) or add that specific site to `custom_domains.py`

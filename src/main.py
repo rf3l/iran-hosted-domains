@@ -1,13 +1,13 @@
+import json
 import os
+from functools import reduce
 
 import requests
 import xlrd
-import json
 
 from constants import *
 from data.custom_domains import *
 from utils import *
-from functools import reduce
 
 
 def download(url: str, path: str):
@@ -63,10 +63,10 @@ def create_qv2ray_schema(directs: list, proxies: list):
 
 
 if __name__ == "__main__":
-    if not os.path.exists("download"):
-        os.mkdir("download")
-    if not os.path.exists("output"):
-        os.mkdir("output")
+    if not os.path.exists("../download"):
+        os.mkdir("../download")
+    if not os.path.exists("../output"):
+        os.mkdir("../output")
 
     # Proxy domains
     proxy_domains = sorted(set(custom_domains["proxy"]))
