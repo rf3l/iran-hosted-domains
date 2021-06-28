@@ -61,7 +61,7 @@ jobs:
           
           cp output/ir_domains.txt domain-list-community/data/ir
           cp output/other_domains.txt domain-list-community/data/other
-          cp data/ads.txt domain-list-community/data/ads
+          cp src/data/ads.txt domain-list-community/data/ads
           
           cd domain-list-community
           go run ./ --outputdir=../output
