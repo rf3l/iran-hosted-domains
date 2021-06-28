@@ -5,7 +5,7 @@ import xlrd
 import json
 
 from constants import *
-from custom_domains import *
+from data.custom_domains import *
 from utils import *
 from functools import reduce
 
