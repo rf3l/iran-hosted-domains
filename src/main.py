@@ -63,10 +63,10 @@ def create_qv2ray_schema(directs: list, proxies: list):
 
 
 if __name__ == "__main__":
-    if not os.path.exists("../download"):
-        os.mkdir("../download")
-    if not os.path.exists("../output"):
-        os.mkdir("../output")
+    if not os.path.exists("download"):
+        os.mkdir("download")
+    if not os.path.exists("output"):
+        os.mkdir("output")
 
     # Proxy domains
     proxy_domains = sorted(set(custom_domains["proxy"]))
