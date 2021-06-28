@@ -58,8 +58,11 @@ jobs:
         run: |
           git clone https://github.com/v2fly/domain-list-community
           rm -rf domain-list-community/data/*
+          
           cp output/ir_domains.txt domain-list-community/data/ir
           cp output/other_domains.txt domain-list-community/data/other
+          cp data/ads.txt domain-list-community/data/ads
+          
           cd domain-list-community
           go run ./ --outputdir=../output
           cd ../output
