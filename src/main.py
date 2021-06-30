@@ -45,6 +45,37 @@ def save_to_file(path, content):
         file.write(content)
 
 
+def create_shadowrocket_config(ir_domains_path: str, other_domains_path: str):
+    with open(ir_domains_path,"r") as f:
+        address_list = f.read().splitlines()
+
+    with open(other_domains_path,"r") as f:
+        address_list.extend(f.read().splitlines())
+
+    config = "#Shadowrocket\n" \
+    "[General]\n" \
+    "bypass-system = true\n"\
+    "skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com\n"\
+    "tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.18.0.0/15, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32\n"\
+    "dns-server = system\n"\
+    "ipv6 = true\n"\
+    "[Rule]\n"
+
+    for address in address_list:
+        config += ("DOMAIN-SUFFIX,"+address+",DIRECT\n")
+
+    config += "USER-AGENT,Line*,PROXY\n"\
+            "IP-CIDR,192.168.0.0/16,DIRECT\n"\
+            "IP-CIDR,10.0.0.0/8,DIRECT\n"\
+            "IP-CIDR,172.16.0.0/12,DIRECT\n"\
+            "IP-CIDR,127.0.0.0/8,DIRECT\n"\
+            "GEOIP,IR,DIRECT\n"\
+            "FINAL,PROXY\n"\
+            "[Host]\n"\
+            "localhost = 127.0.0.1"
+    save_to_file(shadowrocket_path, config)
+
+
 def create_qv2ray_schema(directs: list, proxies: list):
     schema = {
         "description": "Iran hosted domains",
@@ -93,3 +124,4 @@ if __name__ == "__main__":
     save_to_file(ir_domains_path, "\n".join(ir_domains))
     save_to_file(other_domains_path, "\n".join(other_domains))
     create_qv2ray_schema(other_domains, proxy_domains)
+    create_shadowrocket_config(ir_domains_path,other_domains_path)
