@@ -35,5 +35,6 @@ custom_domains = {
         "tipaxco.com",
         "turkeykala.com",
         "virgool.io",
+        "sut.ac.ir",
     ],
 }
