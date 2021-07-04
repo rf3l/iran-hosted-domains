@@ -17,7 +17,7 @@ The following issues arise when using VPN for some Iran hosted websites:
 This can differ depending on which tool you use. You can download the domains list from
 the [release page](https://github.com/SamadiPour/iran-hosted-domains/releases).
 
-### Qv2ray
+### [Qv2ray](https://github.com/Qv2ray/Qv2ray)
 
 In the release section, you'll find the qv2ray_schema file.
 
@@ -48,8 +48,25 @@ It can be used in all v2fly, v2ray and xray clients.
 3. Add proper rules
     - `ext:iran.dat:ir`
     - `ext:iran.dat:other`
+    - `ext:iran.dat:ads`
 
 4. Reconnect
+
+### [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118)
+
+1. Download `shadowrocket.conf` file.
+2. Tap `Import From Cloud` in the Shadowrocket app and then import the file.
+
+<p align="center">
+  <img alt="shadowrocket" src="https://user-images.githubusercontent.com/24422125/124380820-3678dc80-dcd4-11eb-8f59-96fb619d5710.png">
+</p>
+
+3. Finally, tap on the `shadowrocket.conf` and select `Use Config`.
+
+<p align="center">
+  <img alt="shadowrocket" src="https://user-images.githubusercontent.com/24422125/124380847-5d371300-dcd4-11eb-8274-aa72d470357f.png">
+</p>
+
 
 ## Files
 
