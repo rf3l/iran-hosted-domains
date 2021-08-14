@@ -1,9 +1,9 @@
 # Iran Hosted Domains
 
 A lot of services and domains are outside of Iran and they are restricted or blocked by iranian censorship infrastructure or tech companies around the world, 
-for accessing this service you need to use vpn or proxies with tunneling option, apart of this issues when we use 
-proxies the domestic services are unavailable because our ip is not in iran for bypassing this issues we gathered a list of 
-Iranian domains and services to help you bypass the situation.
+for accessing this service you need to use VPN or proxies with tunneling option, apart from these problems, when we use 
+proxies the domestic services are unavailable because our IP is not in Iran; for bypassing these issues we gathered a list of 
+Iranian domains and services to help our people bypass this situation.
 
 ## VPN Problems
 
