@@ -79,7 +79,8 @@
   - ip: `geoip:ir`
   - outbound: `Bypass`
 
-<div dir=rtl>
+<div dir=rtl>  
+
 > برای مشاهده‌ی اسکرین شات از قوانین بالا [اینجا کلیک کنید](https://imgur.com/a/SEq1Bvg).
 
 4. اتصال خود را قطع و وصل کنید.
