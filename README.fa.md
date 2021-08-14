@@ -38,7 +38,8 @@
 
 ### .dat file
 
-این فایل در تمامی کلاینت‌های v2ray, v2fly و xray قابل استفاده است.
+این فایل در تمامی کلاینت‌های v2ray
+  v2fly و xray قابل استفاده است.
 
 1. فایل `iran.dat` را از [این صفحه](https://github.com/SamadiPour/iran-hosted-domains/releases) دانلود کنید.
 2. فایل را در کلاینت خود کپی و یا وارد کنید.  
@@ -94,7 +95,7 @@
   <img alt="shadowrocket" src="https://user-images.githubusercontent.com/24422125/124380820-3678dc80-dcd4-11eb-8f59-96fb619d5710.png">
 </p>
 
-3. در نهایت, بر روی `shadowrocket.conf`کلیک کرده و `Use Config` را انتخاب کنید.
+3. در نهایت، بر روی `shadowrocket.conf`کلیک کرده و `Use Config` را انتخاب کنید.
 
 <p align="center">
   <img alt="shadowrocket" src="https://user-images.githubusercontent.com/24422125/124380847-5d371300-dcd4-11eb-8274-aa72d470357f.png">
@@ -104,9 +105,9 @@
 ## فایل‌ها
 
 - **iran.dat:** شامل `ir_domains.txt` و `other_domains.txt`.
-- **ir_domains:** شامل وب‌سایت‌هایی با دامنه‌ی .ir.
-- **other_domains:** شامل وب‌سایت‌های میزبانی شده در ایران که دامنه‌ی آنها .ir نیست.
-- **qv2ray_schema:** فایل قابل استفاده در کلاینت [Qv2ray](https://github.com/Qv2ray/Qv2ray).
+- **ir_domains.txt:** شامل وب‌سایت‌هایی با دامنه‌ی .ir.
+- **other_domains.txt:** شامل وب‌سایت‌های میزبانی شده در ایران که دامنه‌ی آنها .ir نیست.
+- **qv2ray_schema.json:** فایل قابل استفاده در کلاینت [Qv2ray](https://github.com/Qv2ray/Qv2ray).
 - **shadowrocket.conf:** فایل قابل استفاده در کلاینت [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118).
 
 ## منابع
@@ -118,9 +119,8 @@
 - تبلیغات:
   - [adblock-iran](https://github.com/farrokhi/adblock-iran)
 
-If you know of any other source, or you found a website that isn't here, please open
-an [issue](https://github.com/SamadiPour/iran-hosted-domains/issues) or add that specific site to `custom_domains.py`
-file or contact me.
+اگر شما منابع دیکری می‌شناسید، و یا وب‌سایتی پیدا کرده‌اید که اینجا نیست لطفا یک
+[issue](https://github.com/SamadiPour/iran-hosted-domains/issues) باز کنید و یا فایل `custom_domains.py` را تغییر داده و PR ایجاد کنید.
 
 ## چگونه کار می کند؟
 
